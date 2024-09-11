@@ -1,13 +1,12 @@
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-rl.question('primeiro numero: ', (_num1) => {
-  rl.question('segundo numero: ', (_num2) => {
-    console.log(`a soma dos dois valores é: ${parseInt(num1) + parseInt(num2)}`); 
-  
+function inserirEmPosicao(array, indice, item) {
+  if (indice < 0 || indice > array.length) {
+      throw new Error("Índice fora dos limites do array");
+  }
+  array.splice(indice, 0, item);
+  return array;
+}
 
-  rl.close();
-     })
-})
+// Exemplo de uso:
+let numeros = [1, 2, 3, 5];
+inserirEmPosicao(numeros, 3, 4);  // Insere o 4 na posição 3
+console.log(numeros);  // Saída: [1, 2, 3, 4, 5]
