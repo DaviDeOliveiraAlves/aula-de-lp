@@ -8,6 +8,7 @@ function removerInicio(frutas) {
 }
 function adicionarInicio(frutas) {
   frutas.unshift("kiwi");
+  frutas.pop();
   return frutas;
 }
 function removerFinal(frutas) {
@@ -18,9 +19,5 @@ function trocarItem(frutas) {
   frutas.splice(1, 1, "manga");
   return frutas;
 }
-function adicionarEspecifico(frutas) {
-  frutas.splice(1, 1, 1);
-  return frutas;
-}
-let frutas = ["abacaxi", "maçã", "laranja"];
-console.log(adicionarEspecifico(frutas));
+let frutas = ["abacaxi", "maçã", "laranja", "pessego", "abacate"];
+console.log(trocarItem(frutas));
