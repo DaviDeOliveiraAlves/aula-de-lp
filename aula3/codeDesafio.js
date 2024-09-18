@@ -17,11 +17,11 @@ resultados.question(
             const soma = parseInt(seg1) + parseInt(seg2);
             const soma2 = parseInt(seg1) + parseInt(seg3);
             const soma3 = parseInt(seg2) + parseInt(seg3);
-            if (soma < seg3) {
+            if (soma <= seg3) {
               console.log("estas retas não formam um triangulo");
-            } else if (soma2 < seg2) {
+            } else if (soma2 <= seg2) {
               console.log("estas retas não formam um triangulo");
-            } else if (soma3 < seg1) {
+            } else if (soma3 <= seg1) {
               console.log("estas retas não formam um triangulo");
             } else {
               console.log("é possivel formar um triangulo usando estas retas!");
