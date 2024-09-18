@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 
 rl.question("informe seu nome: ", (nome) => {
   rl.question("informe seu salario: ", (_salario) => {
-    console.log(`O funcionario, ${nome} recebe $${_salario} por mes`);
+    console.log(`O funcionario, ${nome} recebe R$${_salario} por mes`);
 
     rl.close();
   });

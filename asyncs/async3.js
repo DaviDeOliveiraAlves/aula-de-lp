@@ -1,5 +1,3 @@
-const { error } = require("console");
-
 async function divide(numerador, divisor) {
   if (divisor === 0) {
     return Promise.reject(new Error("não é possivel dividir por zero"));

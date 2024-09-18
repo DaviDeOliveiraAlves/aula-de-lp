@@ -1,7 +1,6 @@
 const readline = require("readline");
 
 const number = readline.createInterface({
-  // apos o const eu tenho que botar o nome principal da pergunta e do close
   input: process.stdin,
   output: process.stdout,
 });

@@ -21,7 +21,6 @@ questao.question(
   (dataNascimento) => {
     const idade = descobrirIdade(dataNascimento);
     if (idade > 18) {
-      const idade = calcularIdade(dataNascimento);
       console.log(`Você tem ${idade} anos e pode votar.`);
     } else {
       console.log(`Você tem ${idade} e é jovem demais para votar.`);

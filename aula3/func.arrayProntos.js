@@ -38,4 +38,20 @@ const itemParaRemover = "laranja";
 
 const frutasNovas = removerItem(frutas, itemParaRemover);
 
-console.log(frutasNovas);
+function moverItem(frutas, indiceOriginal, novoIndice) {
+  if (
+    indiceOriginal < 0 ||
+    indiceOriginal >= frutas.length ||
+    novoIndice < 0 ||
+    novoIndice >= frutas.length
+  ) {
+  }
+
+  const [item] = frutas.splice(indiceOriginal, 1);
+
+  frutas.splice(3, 0, item);
+
+  return frutas;
+}
+
+console.log(moverItem(frutas));
