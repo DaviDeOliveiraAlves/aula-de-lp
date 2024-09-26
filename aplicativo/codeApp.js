@@ -182,14 +182,14 @@ const deleteContacts = async () => {
     instructions: false,
   });
   if (contactsToDelete.length == 0) {
-    message = "Nenhuma meta foi selecionada!";
+    message = "Nenhum contato foi selecionada!";
     return;
   }
 
   contactsToDelete.forEach((item) => {
     contacts = contacts.filter((contact) => {
-      console.log(`Diferente: ${contact.value != item}`);
-      return contact.value != item;
+      console.log(`Diferente: ${contact.name != item}`);
+      return contact.name != item;
     });
   });
 
