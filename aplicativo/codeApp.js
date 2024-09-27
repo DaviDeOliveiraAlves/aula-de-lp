@@ -32,10 +32,12 @@ const addContact = async () => {
       message = "";
     }
 
-    name = await input({ message: "Digite o nome do contato: " });
+    name = await input({
+      message: chalk.yellow("Digite o nome do contato: "),
+    });
 
     if (name.length === 0) {
-      message = "Nome não pode ser vazio. Tente novamente.";
+      message = chalk.red("Nome não pode ser vazio. Tente novamente.");
       continue;
     }
 
@@ -49,21 +51,25 @@ const addContact = async () => {
     }
 
     hasDDD = await confirm({
-      message: "Este número possui DDD?",
+      message: chalk.yellow("Este número possui DDD?"),
       initial: true,
     });
 
-    phone = await input({ message: "Digite o telefone do contato: " });
+    phone = await input({
+      message: chalk.yellow("Digite o telefone do contato: "),
+    });
 
     if (phone.length === 0) {
-      message = "Telefone não pode ser vazio. Tente novamente.";
+      message = chalk.red("Telefone não pode ser vazio. Tente novamente.");
       continue;
     }
 
     if (!isValidPhone(phone, hasDDD)) {
       message = hasDDD
-        ? "O telefone com DDD deve ter 11 dígitos (incluindo DDD). Tente novamente."
-        : "O telefone sem DDD deve ter 9 dígitos. Tente novamente.";
+        ? chalk.red(
+            "O telefone com DDD deve ter 11 dígitos (incluindo DDD). Tente novamente."
+          )
+        : chalk.red("O telefone sem DDD deve ter 9 dígitos. Tente novamente.");
       continue;
     }
 
@@ -71,22 +77,22 @@ const addContact = async () => {
   }
 
   contacts.push({ name, phone });
-  message = "Contato adicionado com sucesso!";
+  message = chalk.green("Contato adicionado com sucesso!");
 };
 
 const listContacts = async () => {
   if (contacts.length === 0) {
-    console.log("Nenhum contato registrado.");
+    console.log(chalk.yellow("Nenhum contato registrado."));
     return;
   }
   contacts.forEach((contact) => {
-    console.log(`${contact.name}: ${contact.phone}`);
+    console.log(chalk.green(`${contact.name}: ${contact.phone}`));
   });
 };
 
 const updateContacts = async () => {
   if (contacts.length === 0) {
-    message = "Não existem contatos registrados!";
+    message = chalk.red("Não existem contatos registrados!");
     return;
   }
 
@@ -96,13 +102,13 @@ const updateContacts = async () => {
   }));
 
   const contactsToUpdate = await checkbox({
-    message: "Selecione o(s) contato(s) que deseja alterar: ",
+    message: chalk.yellow("Selecione o(s) contato(s) que deseja alterar: "),
     choices: contactChoices,
     instructions: false,
   });
 
   if (contactsToUpdate.length === 0) {
-    message = "Nenhum contato foi selecionado!";
+    message = chalk.red("Nenhum contato foi selecionado!");
     return;
   }
 
@@ -117,7 +123,9 @@ const updateContacts = async () => {
 
     while (true) {
       newContactName = await input({
-        message: `Digite o novo nome para o contato ${contactName} (ou pressione Enter para manter): `,
+        message: chalk.yellow(
+          `Digite o novo nome para o contato ${contactName} (ou pressione Enter para manter): `
+        ),
       });
 
       // Manter o nome antigo se o novo nome for vazio
@@ -126,7 +134,7 @@ const updateContacts = async () => {
       }
 
       if (newContactName.length === 0) {
-        message = "O novo nome não pode ser vazio! Tente novamente.";
+        message = chalk.red("O novo nome não pode ser vazio! Tente novamente.");
         continue;
       }
       break;
@@ -134,13 +142,14 @@ const updateContacts = async () => {
 
     while (true) {
       hasDDD = await confirm({
-        message: "Este número possui DDD?",
+        message: chalk.yellow("Este número possui DDD?"),
         initial: true,
       });
 
       newContactPhone = await input({
-        message:
-          "Digite o número do contato (ou pressione Enter para manter): ",
+        message: chalk.yellow(
+          "Digite o número do contato (ou pressione Enter para manter): "
+        ),
       });
 
       // Manter o telefone antigo se o novo telefone for vazio
@@ -149,14 +158,18 @@ const updateContacts = async () => {
       }
 
       if (newContactPhone.length === 0) {
-        message = "Número não pode ser vazio! Tente novamente.";
+        message = chalk.red("Número não pode ser vazio! Tente novamente.");
         continue;
       }
 
       if (!isValidPhone(newContactPhone, hasDDD)) {
         message = hasDDD
-          ? "O telefone com DDD deve ter 11 dígitos (incluindo DDD). Tente novamente."
-          : "O telefone sem DDD deve ter 9 dígitos. Tente novamente.";
+          ? chalk.red(
+              "O telefone com DDD deve ter 11 dígitos (incluindo DDD). Tente novamente."
+            )
+          : chalk.red(
+              "O telefone sem DDD deve ter 9 dígitos. Tente novamente."
+            );
         continue;
       }
       break;
@@ -165,24 +178,24 @@ const updateContacts = async () => {
     contacts[contactIndex] = { name: newContactName, phone: newContactPhone };
   }
 
-  message = "Contato(s) alterado(s) com sucesso!";
+  message = chalk.green("Contato(s) alterado(s) com sucesso!");
 };
 
 const deleteContacts = async () => {
   if (contacts.length == 0) {
-    message = "Não existem contatos registrados!";
+    message = chalk.red("Não existem contatos registrados!");
     return;
   }
   const contactChoices = contacts.map((contact) => {
     return { name: contact.name, value: contact.name, checked: false };
   });
   const contactsToDelete = await checkbox({
-    message: "selecione os contatos que deseja deletar:",
+    message: chalk.yellow("selecione os contatos que deseja deletar:"),
     choices: contactChoices,
     instructions: false,
   });
   if (contactsToDelete.length == 0) {
-    message = "Nenhum contato foi selecionada!";
+    message = chalk.red("Nenhum contato foi selecionada!");
     return;
   }
 
@@ -193,12 +206,12 @@ const deleteContacts = async () => {
     });
   });
 
-  message = "Contato(s) deletado(s) com sucesso!";
+  message = chalk.green("Contato(s) deletado(s) com sucesso!");
 };
 
 const showMessage = () => {
   if (message !== "") {
-    console.log(chalk.bgGreen.italic(message));
+    console.log(chalk.green.italic(message));
     console.log("");
     message = "";
   }
@@ -209,15 +222,16 @@ const start = async () => {
 
   while (true) {
     showMessage();
+    await saveContacts();
 
     const option = await select({
-      message: "Menu > ",
+      message: chalk.blue("Menu > "),
       choices: [
-        { name: "Adicionar contato", value: "register" },
-        { name: "Listar todos os contatos", value: "list" },
-        { name: "Atualizar os seus contato", value: "update" },
-        { name: "deletar contatos", value: "delete" },
-        { name: "Sair", value: "out" },
+        { name: chalk.yellow("Adicionar contato"), value: "register" },
+        { name: chalk.yellow("Listar todos os contatos"), value: "list" },
+        { name: chalk.yellow("Atualizar os seus contato"), value: "update" },
+        { name: chalk.yellow("deletar contatos"), value: "delete" },
+        { name: chalk.red("Sair"), value: "out" },
       ],
     });
 
