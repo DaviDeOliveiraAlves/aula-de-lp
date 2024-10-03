@@ -24,7 +24,7 @@ ul {
   align-items: center;
   max-width: 370px;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #001e80;
   border-radius: 24px;
   padding: 25px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -65,17 +65,19 @@ ul {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  color: #460096;
+  color: #000000;
 }
 
 .text-data .name {
   font-size: 22px;
   font-weight: 500;
+  font-style: italic;
 }
 
 .text-data .job {
   font-size: 14px;
   font-weight: 400;
+  font-style: italic;
 }
 
 .media-buttons {
@@ -121,7 +123,7 @@ ul {
 }
 
 .contact-buttons button {
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
   font-weight: 400;
   border: none;
@@ -146,7 +148,7 @@ ul {
 .analytics .data {
   display: flex;
   align-items: center;
-  color: #333;
+  color: #000000;
   padding: 0 14px;
   border-right: 2px solid #e7e7e7;
 }

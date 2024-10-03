@@ -128,7 +128,6 @@ const updateContacts = async () => {
         ),
       });
 
-      // Manter o nome antigo se o novo nome for vazio
       if (newContactName.length === 0) {
         newContactName = contacts[contactIndex].name;
       }
@@ -152,7 +151,6 @@ const updateContacts = async () => {
         ),
       });
 
-      // Manter o telefone antigo se o novo telefone for vazio
       if (newContactPhone.length === 0) {
         newContactPhone = contacts[contactIndex].phone;
       }
@@ -238,14 +236,14 @@ const start = async () => {
     switch (option) {
       case "register":
         await addContact();
-        await saveContacts(); // Salvar após adicionar
+        await saveContacts();
         break;
       case "list":
         await listContacts();
         break;
       case "update":
         await updateContacts();
-        await saveContacts(); // Salvar após atualizar
+        await saveContacts();
         break;
       case "delete":
         await deleteContacts();
