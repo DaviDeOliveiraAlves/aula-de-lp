@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+
+  font-family: "Poppins", sans-serif;
+}
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  width: 100%;
+  background-color: #7202b3;
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.text {
+  color: white;
+  margin-top: 28px;
+}
+.text2 {
+  color: gray;
+  margin-top: 28px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+.controls div {
+  margin: 0 25px;
+}
+
+.track {
+  margin-top: 28px;
+  position: relative;
+}
+
+.track::before {
+  content: "";
+  height: 6px;
+  width: 100%;
+  display: block;
+  background: #d9d9d9;
+  opacity: 0.3;
+  border-radius: 10px;
+
+  position: absolute;
+}
+
+.track::after {
+  content: "";
+  height: 6px;
+  width: 80%;
+  display: block;
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+
+.time {
+  font-size: 14px;
+  color: #c4c4cc;
+  opacity: 0.7;
+
+  display: flex;
+  justify-content: space-between;
+  margin: 1;
+  margin-top: 9.6px;
+}
+
+.total-time {
+  margin: 0 50px;
+  margin-bottom: 25px;
+}
+
+.last-time {
+  margin: 0 50px;
+}
