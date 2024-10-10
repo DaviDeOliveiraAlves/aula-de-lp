@@ -1,24 +1,28 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+document.addEventListener("DOMContentLoaded", function () {
+  const username = "DaviDeOliveiraAlves";
+  const url = `https://api.github.com/users/${username}`;
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("usuario não encontrado");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const resultElement = document.getElementById("result");
 
-setupCounter(document.querySelector('#counter'))
+      resultElement.innerHTML = `
+    <h2>${data.login}</h2>
+    <p><strong>Nome:</strong>${data.name}</p>
+    <img src="${data.avatar_url}" alt="avatar" width="100">
+    <p><strong>Seguidores:</strong> ${data.followers}</p>
+    `;
+    })
+
+    .catch((error) => {
+      console.error(error);
+      const resultElement = document.getElementById("result");
+      resultElement.innerHTML = `<p>${error.message}</p>`;
+    });
+});

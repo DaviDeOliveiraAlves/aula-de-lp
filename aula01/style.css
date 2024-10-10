@@ -57,7 +57,7 @@ ul {
   width: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #ffffff;
+  border: 3px solid #000000;
 }
 
 .profile-card .text-data {
@@ -84,6 +84,9 @@ ul {
   display: flex;
   align-items: center;
   margin-top: 15px;
+}
+.media-buttons a {
+  text-decoration: none;
 }
 
 .media-buttons .link {
@@ -148,7 +151,7 @@ ul {
 .analytics .data {
   display: flex;
   align-items: center;
-  color: #000000;
+  color: #ffffff;
   padding: 0 14px;
   border-right: 2px solid #e7e7e7;
 }
