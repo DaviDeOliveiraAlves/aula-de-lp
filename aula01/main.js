@@ -1,23 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const username = "DaviDeOliveiraAlves";
+  const username = "camillysilveira";
   const url = `https://api.github.com/users/${username}`;
 
   fetch(url)
     .then((response) => {
       if (!response.ok) {
-        throw new Error("usuario não encontrado");
+        throw new Error("Usuário não encontrado");
       }
       return response.json();
     })
     .then((data) => {
-      const resultElement = document.getElementById("result");
+      const username = document.getElementById("name");
+      username.textContent = data.name;
 
-      resultElement.innerHTML = `
-    <h2>${data.login}</h2>
-    <p><strong>Nome:</strong>${data.name}</p>
-    <img src="${data.avatar_url}" alt="avatar" width="100">
-    <p><strong>Seguidores:</strong> ${data.followers}</p>
-    `;
+      const profile = document.getElementById("avatar");
+      profile.imgContent = data.profile;
+
+      const followers = document.getElementById("followers");
+      followers.textContent = data.followers;
+
+      const following = document.getElementById("following");
+      following.textContent = data.following;
+
+      const public = document.getElementById("public");
+      public.textContent = data.public_repos;
     })
 
     .catch((error) => {
