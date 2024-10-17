@@ -1,0 +1,374 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+/* VARIABLES */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --gray-color: #f8f8f8;
+  --light-color: #868686;
+  --primary-color: #1b1b1b;
+  --dark-gray-color: #787878;
+  --secondary-color: #fcc26b;
+  --dark-primary-color: #242424;
+
+  --line-height: 155%;
+
+  --secondary-font: "Road Rage", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem; /* somando com o tamnho, fecha o tamanho do grid */
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+header {
+  position: absolute; /* ficará por cima da seção de baixo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 4.7rem 0;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .container nav {
+  display: flex;
+  gap: 3.7rem;
+}
+
+header .container nav a {
+  text-transform: uppercase;
+  color: #514b4b;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: var(--line-height);
+  letter-spacing: 0.96px;
+
+  position: relative;
+}
+
+header .container nav .active {
+  color: var(--black);
+  font-weight: 700;
+}
+
+header .container nav .active:before {
+  content: "";
+  width: 0.4rem;
+  height: 3.2rem;
+  background: url("./assets/line.svg") no-repeat center center;
+  position: absolute;
+  left: 50%;
+  margin-left: -0.2rem;
+  top: -3.6rem;
+}
+
+header .container nav a:hover {
+  color: var(--black);
+}
+
+.right {
+  display: flex;
+  gap: 3rem;
+}
+
+/* HOME */
+.s-hero {
+  width: 100%;
+  height: 95.3rem;
+  position: relative; /* por conta da imagem de fantasma */
+  background: url("../assets/bg-hero.png") no-repeat top center;
+  background-size: cover; /* garante que ocupe toda a tela */
+
+  overflow: hidden; /* adicionar junto do fantasma */
+}
+
+.s-hero .left-text {
+  width: 100%;
+  max-width: 62.8rem;
+  padding-top: 29.2rem;
+}
+
+.s-hero .left-text .title {
+  margin-bottom: 4rem;
+}
+
+.s-hero .left-text .title h1 {
+  color: var(--light-color);
+  font-weight: 400;
+  font-size: 10.5rem;
+  line-height: 72%;
+}
+
+.s-hero .left-text .title h1,
+.s-hero .left-text .title span {
+  font-family: var(--secondary-font);
+}
+
+.s-hero .left-text .title span {
+  color: var(--primary-color);
+}
+
+.s-hero .left-text .title img {
+  margin-top: -2rem;
+}
+
+.s-hero .left-text p {
+  color: --var(--light-color);
+  font-size: 1.6rem;
+  line-height: var(--line-height);
+  margin-bottom: 4.3rem;
+}
+
+.s-hero .left-text button {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.s-hero .left-text button span {
+  color: var(--black);
+  /* borda do texto */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--secondary-color);
+  font-family: var(--secondary-font);
+  font-size: 4rem;
+  letter-spacing: 2px;
+}
+
+.users {
+  margin-top: 10.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.users ul {
+  display: flex;
+  align-items: center;
+}
+
+.users ul li {
+  background-color: var(--white);
+  border: 2px solid var(--secondary-color);
+  border-radius: 50%;
+  width: 4.7rem;
+  height: 4.7rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.users ul li:not(:first-child) {
+  margin-left: -1.6rem;
+}
+
+.users ul li strong {
+  color: var(--dark-primary-color);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: var(--line-height);
+}
+
+.ilustration {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.s-info {
+  padding-top: 4rem;
+  padding-bottom: 12.2rem;
+}
+
+.s-info p {
+  width: 100%;
+  max-width: 77rem;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  line-height: var(--line-height);
+  margin-bottom: 10.2rem;
+}
+
+.s-info .box {
+  width: 100%;
+  max-width: 85.8rem;
+  height: 27.7rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+  border: 0.15rem solid #dadada;
+  border-radius: 2rem;
+
+  position: relative;
+}
+
+.s-info .content {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  background: var(--secondary-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 4.5rem;
+}
+
+.s-info .info-ilustration {
+  position: absolute;
+  top: -7.4rem;
+  left: -1.6rem;
+  z-index: 1;
+}
+
+.s-info .content ul {
+  display: flex;
+}
+
+.s-info .content ul li {
+  text-align: center;
+  padding: 1.5rem 2.1rem;
+}
+
+.s-info .content ul li:first-child {
+  padding-left: 0;
+}
+
+.s-info .content ul li:last-child {
+  padding-right: 0;
+}
+
+.s-info .content ul li:not(:first-child) {
+  border-left: 1px solid rgba(255, 255, 255, 0.43);
+}
+
+.s-info .content ul li strong {
+  color: var(--black);
+  font-size: 1.4rem;
+  line-height: var(--line-height);
+  margin-bottom: 1.3rem;
+}
+
+.s-info .content ul li h3 {
+  font-family: var(--secondary-font);
+  color: var(--white);
+  font-weight: 400;
+  font-size: 7.6rem;
+  line-height: var(--line-height);
+}
+
+.how-to-use {
+  background: var(--gray-color);
+  padding-top: 10.4rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.how-to-use .container {
+  display: flex;
+}
+
+.how-to-use .container img {
+  padding-bottom: 7rem;
+}
+.how-to-use .steps {
+  padding-right: 5.4rem;
+}
+
+.how-to-use .steps ul li strong {
+  font-size: 1.8rem;
+  line-height: var(--line-height);
+  color: var(--primary-color);
+}
+
+.how-to-use .steps ul li p {
+  width: 100%;
+  max-width: 50rem;
+  padding-top: 1.8rem;
+  padding-bottom: 4.1rem;
+  color: var(--dark-gray-color);
+  font-size: 1.6rem;
+  line-height: var(--line-height);
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin: 0 auto;
+  left: 50%;
+  bottom: -24px;
+  padding: 9px 5.2rem;
+}
+
+.btn-secondary span {
+  font-size: 4.6rem;
+  font-family: var(--secondary-font);
+  letter-spacing: 5%;
+}
+
+@media (max-width: 1440px) {
+  .ilustration {
+    right: -20px;
+  }
+}
+
+@media (max-width: 1650px) {
+  .ilustration {
+    right: -36rem;
+  }
+}
