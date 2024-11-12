@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  user-select: none;
+  background-color: #0f03affb;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: rgb(209, 196, 10);
+  padding: 40px 60px;
+  border-radius: 20px; /* Borda arredondada para o container */
+}
+
+h1 {
+  font-size: 3em;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 0;
+}
+
+.logo img {
+  width: 350px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+.reset {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 15px 40px; /* Aumentar o tamanho para efeito cilíndrico */
+  width: auto; /* Deixe a largura se ajustar ao conteúdo */
+  background-color: rgba(226, 9, 9, 0.705);
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 30px; /* Arredondamento maior para efeito cilíndrico */
+}
+
+.reset:focus {
+  color: #666666;
+  background-color: rgb(194, 194, 160);
+}
+
+.game {
+  width: 430px;
+  height: 430px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1rem;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.item {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: azure;
+  font-size: 3em;
+  transform: rotateY(180deg);
+  transition: 0.25s;
+  border-radius: 10px; /* Borda arredondada para o card */
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #404040;
+  transition: 0.25s;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+  border-radius: 10px; /* Borda arredondada no verso do card */
+}
+
+.item.boxOpen {
+  transform: rotateY(0deg);
+}
+
+.boxOpen::after,
+.boxMatch::after {
+  transform: rotateX(180deg);
+}
+
+/* Estilo para as imagens, garantindo que elas se ajustem ao tamanho das cartas */
+.item img {
+  width: 80px; /* Ajuste do tamanho das imagens para caber bem nas cartas */
+  height: 80px;
+  object-fit: contain;
+}
